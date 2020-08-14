@@ -367,31 +367,6 @@ def nova_igra(seznam_igralcev):
     return igra
 
 
-
-[('Jana', 2), ('Špela', 5), ('Maša', 3), ('Miran', 1)]       
-        
-
-igra = nova_igra(['Špela', 'Tonček'])
-Špela = igra.igralci[0]
-Tonček = igra.igralci[1]
-
-Špela.stojalo.stojalo = ['B', 'E', 'S', 'E', 'D', 'A', 'Ž']
-Tonček.stojalo.stojalo = ['E', 'M', 'B', 'R', 'I', 'O', 'B']
-
-igra.igraj_besedo("beseda", Špela, (7, 7), "desno")
-igra.igraj_besedo("embrio", Tonček, (7, 8), "DOL")
-
-Špela.stojalo.stojalo = ['B', 'E', 'S', 'E', 'D', 'A', 'Ž']
-igra.igraj_besedo("bes", Špela, (5, 9),'dol')
-igra.zamenjaj(Tonček, 'B')
-igra.zamenjaj(Špela, 'E')
-igra.zamenjaj(Špela, 'D')
-print(igra.kdo_je_zmagovalec())
-print(igra.igralci[igra.na_potezi].ime)
-print(igra.igralci[(igra.na_potezi + 1) % 2].ime)
-
-
-
 def naredi_tabelo_deske(igra):
     seznam_deske = igra.deska.deska 
     tabela = [[0 for k in range(15)] for l in range(15)]
