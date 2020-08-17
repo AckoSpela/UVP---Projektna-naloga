@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Skrabl</title>
+    </head>
+    <body> 
+        <p>
+        Veljavne so le besede, ki se nahajajo na spletnem portalu Fran. <br>
+        Začni igro tako, da z eno črko besede pokriješ sredinsko (rumeno) polje. <br>
+        Vsaka nova beseda mora vsaj v eni črki sekati neko že postavljeno besedo.
+        </p>
+        
+        <p>
+            Pomen polj: <span style="background-color: yellow;">sredina</span>, 
+            <span style="background-color: lightcoral;">trojna vrednost besede</span>, 
+            <span style="background-color: darkseagreen;">dvojna vrednost besede</span>,
+            <span style="background-color: lightskyblue;">trojna vrednost črke</span>, 
+            <span style="background-color: lightslategrey;">dvojna vrednost črke</span>
+        </p>
+        
+        <div class="column">
+            % for vrstica in nasa_deska:
+            <div class="row">
+                % for element in vrstica:
+                %   if element[1] == 'sredina':
+                <span style="background-color: yellow;">{{element[0]}}</span>
+                %   elif element[1] == None:
+                <span style="background-color: white;">{{element[0]}}</span>
+                %   elif element[1] == 'TPB':
+                <span style="background-color: lightcoral;">{{element[0]}}</span>
+                %   elif element[1] == 'DPB':
+                <span style="background-color: darkseagreen;">{{element[0]}}</span>
+                %   elif element[1] == 'TPČ':
+                <span style="background-color: lightskyblue;">{{element[0]}}</span>
+                %   elif element[1] == 'DPČ':
+                <span style="background-color: lightslategrey;">{{element[0]}}</span>
+                % end
+                % end
+            </div>
+            %end
+        </div> <br>
+
+        <p><span style="font-weight: bold;">{{na_potezi}}: {{tocke_igra}}</span>, <span style="font-weight: lighter;">{{ni_na_potezi}}: {{tocke_ne_igra}}</span> <br>
+        Igra {{na_potezi}}.</p>
+
+
+        <p>STOJALO: {{stojalo}}</p>
+
+        <p>
+        <form action="/deska_igraj_besedo/">
+            <input type="submit" value="IGRAJ BESEDO">
+        </form>
+        </p>
+        
+        <form action="/deska_zamenjaj_crko/" method="POST">
+            Nimaš besede, ki bi jo postavil? Zamenjaj črko, a pazi, potem ta krog ne moreš položiti besede.<br>
+            % for crka in stojalo:
+            <input type="radio" id="{{crka}}" name="zamenjana_crka" value="{{crka}}">
+            <label for="{{crka}}">{{crka}}</label>
+            % end
+            <input type="submit" value="ZAMENJAJ IN TA KROG NE IGRAJ">
+        </form>
+     
+
+    </body>
+</html>

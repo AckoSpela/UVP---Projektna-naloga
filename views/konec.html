@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Skrabl</title>
+    </head>
+    <body>  
+        <h1>KONEC IGRE</h1>
+
+        % if len(zmagovalci) == 1:
+            <h2>Zmagovalec/ka je {{zmagovalci[0]}}.</h2>
+        % else:
+            <h2>Si lahko misliš? Remi! Bravo obema!</h2>
+
+        REZULTATI: {{rezultat[0][0]}}: {{rezultat[0][1]}}, {{rezultat[1][0]}}: {{rezultat[1][1]}}
+
+        <form action="/">
+            <input type="submit" value="NOVA IGRA">
+        </form>
+    </body>
+</html>

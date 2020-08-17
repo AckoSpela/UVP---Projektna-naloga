@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Skrabl</title>
+    </head>
+    <body> 
+        <p>
+            Veljavne so le besede, ki se nahajajo na spletnem portalu Fran. <br>
+            Začni igro tako, da z eno črko besede pokriješ sredinsko (rumeno) polje. <br>
+            Vsaka nova beseda mora vsaj v eni črki sekati neko že postavljeno besedo.
+        </p>
+            
+        <p>
+            Pomen polj: <span style="background-color: yellow;">sredina</span>, 
+            <span style="background-color: lightcoral;">trojna vrednost besede</span>, 
+            <span style="background-color: darkseagreen;">dvojna vrednost besede</span>,
+            <span style="background-color: lightskyblue;">trojna vrednost črke</span>, 
+            <span style="background-color: lightslategrey;">dvojna vrednost črke</span>
+        </p>
+             
+        <form action="/postavi_besedo/" method="POST">
+            <div class="column">
+                % for vrstica in nasa_deska:
+                <div class="row">
+                    % for element in vrstica:
+                    %   if element[1] == 'sredina':
+                    
+                    <input type="radio" id="{{element[2]}}" name="polje" value="{{element[2]}}">
+                    <label for="{{element[2]}}"><span style="background-color: yellow;">{{element[0]}}</span></label>
+                
+                    %   elif element[1] == None:
+                    <input type="radio" id="{{element[2]}}" name="polje" value="{{element[2]}}">
+                    <label for="{{element[2]}}"><span style="background-color: white;">{{element[0]}}</span></label>
+                
+                    %   elif element[1] == 'TPB':
+                    <input type="radio" id="{{element[2]}}" name="polje" value="{{element[2]}}">
+                    <label for="{{element[2]}}"><span style="background-color: lightcoral;">{{element[0]}}</span></label>
+                
+                    %   elif element[1] == 'DPB':
+                    <input type="radio" id="{{element[2]}}" name="polje" value="{{element[2]}}">
+                    <label for="{{element[2]}}"><span style="background-color: darkseagreen;">{{element[0]}}</span></label>
+                
+                    %   elif element[1] == 'TPČ':
+                    <input type="radio" id="{{element[2]}}" name="polje" value="{{element[2]}}">
+                    <label for="{{element[2]}}"><span style="background-color: lightskyblue;">{{element[0]}}</span></label>
+                
+                    %   elif element[1] == 'DPČ':
+                    <input type="radio" id="{{element[2]}}" name="polje" value="{{element[2]}}">
+                    <label for="{{element[2]}}"><span style="background-color: lightslategrey;">{{element[0]}}</span></label>
+                
+                    % end
+                    % end
+                </div>
+                %end
+            </div> <br>
+
+            <p><span style="font-weight: bold;">{{na_potezi}}: {{tocke_igra}}</span>, <span style="font-weight: lighter;">{{ni_na_potezi}}: {{tocke_ne_igra}}</span> <br>
+            Igra {{na_potezi}}.</p>
+
+
+            <p>STOJALO: {{stojalo}}</p>
+
+        
+            <p>Katero besedo želiš postaviti? <input type="text" name="besedilo"></p>
+
+            <p>Na deski označi, kje želiš, da se beseda začne.</p>
+
+            <p>V kateri smeri želiš postaviti besedo? <br>
+            <input type="radio" id="DESNO" name="smer_besede" value="DESNO"> 
+            <label for="DESNO">DESNO</label> <br>
+            <input type="radio" id="DOL" name="smer_besede" value="DOL"> 
+            <label for="DOL">DOL</label> <br>
+            </p>
+
+            <input type="submit" value="POSTAVI BESEDO">
+        </form>
+
+    </body>
+</html>
