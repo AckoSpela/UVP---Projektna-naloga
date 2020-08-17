@@ -394,6 +394,5 @@ def samo_crke(tabela):
             tabela[i][j] = elt[0]
     return tabela
 
-print(naredi_tabelo_deske(igra)[7][7])
 
         
